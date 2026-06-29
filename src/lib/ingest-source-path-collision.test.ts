@@ -506,7 +506,7 @@ describe("autoIngest source summary paths", () => {
         controller.signal,
         "project-a",
       ),
-    ).rejects.toThrow("AbortError")
+    ).rejects.toThrow("Ingest cancelled")
   })
 
   it("falls back to built-in PDF extraction when MinerU fails for a non-cancelled ingest", async () => {
@@ -563,7 +563,7 @@ describe("autoIngest source summary paths", () => {
         controller.signal,
         "project-a",
       ),
-    ).rejects.toThrow("MinerU parsing cancelled")
+    ).rejects.toThrow("Ingest cancelled")
 
     expect(
       useActivityStore.getState().items.some((item) =>
